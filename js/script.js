@@ -1,13 +1,14 @@
 "use strict";
 
 
-  const container1 = document.querySelector('.container1');
-  const container2 = document.querySelector('.container2');
+  const container1 = document.querySelector('.pal');
+  const container2 = document.querySelector('.nmbwar');
  
 const btn1 = document.getElementById('btn1');
 const btn2 = document.getElementById('btn2');
 const inputTag1 = document.getElementById('parola');
-const inputTag2 = document.getElementById('numero');
+const numero = document.getElementById('numero');
+const team = document.getElementById('pari-dispari');
 const testo = document.getElementById('testo');
 const textPal = document.getElementById('textPal');
 
@@ -15,10 +16,13 @@ const textPal = document.getElementById('textPal');
 
 //dfinizione funzione per palindromia invocando funzione in libreria
 btn1.addEventListener('click', function(){
+  removeFirstNotification()
   const str = inputTag1.value;
 
-  if(!inputTag1.value){
-    removeFirstNotification()
+
+  // controllo
+  if(!inputTag1.value || !isNaN(inputTag1.value)){
+    
     testo.innerHTML = '';
     const divAlert = notificationError('scrivi qualcosa !');
     container1.prepend(divAlert);
@@ -37,23 +41,29 @@ btn1.addEventListener('click', function(){
 
 // funzione per determinare pari o dispari numero imputato
 btn2.addEventListener('click', function(){
-  const num = parseInt(inputTag2.value);
+  removeFirstNotification()
+  const num1 = parseInt(numero.value);
   
-  if(isNaN(num)){
-    removeFirstNotification()
+  
+
+  // controllo
+  if(isNaN(num1) || num1 > 5){
     testo.innerHTML = '';
-    const divAlert = notificationError('Devi inserire un numero !');
+    const divAlert = notificationError('Devi inserire un numero compreso tra 1 e 5 !');
     container2.prepend(divAlert);
     return;
    }
+
+
     
     
   
    
    if(isEven(somma)){
-       testo.innerHTML = 'Il numero è pari !';
+       testo.innerHTML.toUpperCase = 'pari vince!';
    } else {
-        testo.innerHTML = 'Il numero è dispari !';
+        testo.innerHTML.toLocaleUpperCase = 'dispari regna!';
    }
-   inputTag2.value = '';
+   num1.value = '';
+   num2.value = '';
 })
