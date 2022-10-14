@@ -20,12 +20,18 @@ function removeFirstNotification(){
     console.log(alertToRemove);
    if(alertToRemove) alertToRemove.remove();
 }
-const parola = 'pippo';
-const parolaLen = parola.length;
-let parolaGirata = parola.split('').reverse().join('');
+
+// const parolaLen = parola.length;
+// let parolaGirata = parola.split('').reverse().join('');
+
+function palindrome(str) {
+    let parola = str.toLowerCase();
+    let parolaGirata = parola.split('').reverse().join('');
+    return parolaGirata === parola;
+}
 // for(let i = parolaLen - 1; i >= 0; i-- ){
 //     parolaGirata += parola.charAt(i);
 // }
-console.log(parolaGirata);
+// console.log(parolaGirata);
 
 
