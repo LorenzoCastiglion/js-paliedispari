@@ -1,20 +1,15 @@
 "use strict";
 
-
-  const container1 = document.querySelector('.pal');
-  const container2 = document.querySelector('.nmbwar');
- 
+// primo esercizio
+const container1 = document.querySelector('.pal');
 const btn1 = document.getElementById('btn1');
-const btn2 = document.getElementById('btn2');
 const inputTag1 = document.getElementById('parola');
-const numero = document.getElementById('numero');
 const team = document.getElementById('pari-dispari');
-const testo = document.getElementById('testo');
 const textPal = document.getElementById('textPal');
 
 
 
-//dfinizione funzione per palindromia invocando funzione in libreria
+//definizione funzione per palindromia invocando funzione in libreria
 btn1.addEventListener('click', function(){
   removeFirstNotification()
   const str = inputTag1.value;
@@ -38,32 +33,40 @@ btn1.addEventListener('click', function(){
 
 
 
+// secondo esercizio
+  const container2 = document.querySelector('.nmbwar');
+  const btn2 = document.getElementById('btn2');
+  
+  const testo = document.getElementById('testo');
 
 // funzione per determinare pari o dispari numero imputato
 btn2.addEventListener('click', function(){
+  const numero = document.getElementById('numero');
+  const pariDispari = document.getElementById('pari-dispari').value.toLowerCase().trim();
+  
   removeFirstNotification()
-  const num1 = parseInt(numero.value);
-  
-  
-
   // controllo
-  if(isNaN(num1) || num1 > 5){
+  if( pariDispari != 'pari' && pariDispari != 'dispari' || !(0 <= numero <= 5)){
     testo.innerHTML = '';
-    const divAlert = notificationError('Devi inserire un numero compreso tra 1 e 5 !');
+    const divAlert = notificationError('inserisci un numero compreso tra 1 e 5 e scegli la tua squadra scrivendo pari o dispari');
     container2.prepend(divAlert);
     return;
    }
-
-
-    
-    
-  
    
-   if(isEven(somma)){
-       testo.innerHTML.toUpperCase = 'pari vince!';
-   } else {
-        testo.innerHTML.toLocaleUpperCase = 'dispari regna!';
-   }
-   num1.value = '';
-   num2.value = '';
+
+   const machineNumb = Math.floor(Math.random()*5)+1;
+    console.log(machineNumb);
+    const somma = parseInt(numero.value) + machineNumb;
+  
+    testo.innerHTML = `Utente ha scelto: ${pariDispari}  Utente: ${numero.value} Macchina: ${machineNumb} Somma: ${somma} `
+   
+   
+    if (pariDispari == 'pari' && somma %2 == 0 || pariDispari == 'dispari' && somma%2 != 0){
+        testo.innerHTML += "L'utente ha Vinto";
+    }else{
+        testo.innerHTML += "Il PC ha Vinto";
+    }
+    
+    numero.value = '' ;
+    document.getElementById('pari-dispari').value = '';
 })
